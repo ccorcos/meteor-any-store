@@ -2,6 +2,8 @@
 
 This package provides a client-side interface for `ccorcos:any-db` that's responsible for subscription caching and latency compensation. As a bonus, it also provides caching for HTTP fetching.
 
+[Check out this article](https://medium.com/p/d2e01e708f31/).
+
 # Getting Started
 
 Simply add this package to your project:
