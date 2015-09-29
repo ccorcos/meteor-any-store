@@ -7,21 +7,17 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
-
   var packages = [
     'coffeescript',
     'ccorcos:any-db@0.1.0',
     'ccorcos:utils@0.0.1',
   ];
-
   api.use(packages);
   api.imply(packages);
-
   api.add_files([
     'globals.js',
     'http-store.coffee',
     'sub-store.coffee'
   ], 'client');
-
   api.export(['AnyStore'], 'client');
 });
