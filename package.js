@@ -1,6 +1,6 @@
 Package.describe({
   name: 'ccorcos:any-store',
-  summary: 'A flux-like interface for ccorcos:any-db subscriptions and http endpoints',
+  summary: 'A client interface for ccorcos:any-db subscriptions and http endpoints',
   version: '0.0.1',
   git: 'https://github.com/ccorcos/meteor-any-store'
 });
