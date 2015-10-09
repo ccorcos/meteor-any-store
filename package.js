@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   var packages = [
     'coffeescript',
     'ccorcos:any-db@0.1.0',
-    'ccorcos:utils@0.0.1',
+    'ccorcos:utils@0.0.2',
   ];
   api.use(packages);
   api.imply(packages);

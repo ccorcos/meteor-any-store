@@ -37,40 +37,15 @@ You need to call clear once for every time you call get, else you'll have a memo
 
 You can create a store for a `ccorcos:any-db` publication like this:
 
-## TO DO
+```coffee
+AnyStore.createSubStore(name, {minutes}, shortcut)
+AnyStore.createSubListStore(name, {minutes, limit}, shortcut)
+AnyStore.createHTTPStore(name, {minutes}, fetcher)
+AnyStore.createHTTPListStore(name, {minutes, limit}, fetcher)
+```
 
-this will change soon
+Minutes defaults to 1 and limit defaults to 10. The subscription name pairs with an AnyDb publication. And shortcut is an optional function to look for the result of this query in another subscription so you don't have to wait for a round trip to the server. For example, maybe you're querying for a user, but that user was just clicked on in a list from another subscription. The shortcut allows you to display that user immediately by searching for that user in the user list subscriptions.
 
-XXX change to {name, minutes, limit, shortcut, fetcher}
-AnyStore.createSubStore = (name, {minutes}) ->
-AnyStore.createSubListStore = (name, {minutes, limit}, shortcut) ->
-AnyStore.createHTTPStore = (name, {minutes}, fetcher) ->
-AnyStore.createHTTPListStore = (name, {minutes, limit}, fetcher) ->
+For HTTP stores, you have an async fetcher function that works well with the HTTP Meteor package.
 
-
-{name, minutes, limit, shortcut, fetcher}
-{data, fetch, clear, watch}
-
-Name is the AnyDb.publish name or the name of an object for localStorage using Meteor.
-
-Minutes is how long to wait after clear before stopping the publications and/or deleting the data.
-
-limit size of a page for list stores. This assumes the query of a store is an object and tags on a paging: {limit, skip} where limit is the size requested back and skip is  how many ay the beginnign you dont need. This is optimal. When doing http requests, you'll do something like this where limit.
-XXX check this out exactly. terrilbe name. use pageSize or something. And pages.
-
-shortcut gives you a an opportunity to find a document in another subscription which will shortcut your serve and provide immediate feedback.
-
-fetcher is for aync functions like http.get.
-
-data is the data currently in the cache. undefined or some collection if its a subscription (could be empty []), or whatever the async responds with.
-
-
-
-
-
-
-LIMIT = Meteor.settings?.public?.sub_list_paging_inc || 10
-MINUTES = Meteor.settings?.public?.sub_cache_minutes || 0
-
-LIMIT = Meteor.settings.public?.http_list_paging_inc || 10
-MINUTES = Meteor.settings.public?.http_cache_minutes || 0
+Its also important that your query is a plain object. This allows AnyStore to tag on a paging:{limit,skip} property for paging.

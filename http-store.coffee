@@ -2,8 +2,8 @@ debug = (->)
 if Meteor.settings.public?.log?.http_store
   debug = console.log.bind(console, 'http-store')
 
-LIMIT = Meteor.settings.public?.http_list_paging_inc || 10
-MINUTES = Meteor.settings.public?.http_cache_minutes || 0
+LIMIT = 10
+MINUTES = 1
 
 # {data, fetch, clear, watch} = store.get(query)
 AnyStore.createHTTPStore = (name, options={}, fetcher) ->

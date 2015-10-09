@@ -2,8 +2,8 @@ debug = (->)
 if Meteor.settings.public?.log?.sub_store
   debug = console.log.bind(console, 'sub-store')
 
-LIMIT = Meteor.settings?.public?.sub_list_paging_inc || 10
-MINUTES = Meteor.settings?.public?.sub_cache_minutes || 0
+LIMIT = 10
+MINUTES = 1
 
 AnyStore.createSubStore = (name, options={}, shortcut) ->
   store = AnyStore.createHTTPStore(name)
