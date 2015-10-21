@@ -1,3 +1,5 @@
+[![Meteor Icon](http://icon.meteor.com/package/ccorcos:any-store)](https://atmospherejs.com/ccorcos/any-store)
+
 # Meteor Any-Store
 
 This package provides a client-side interface for `ccorcos:any-db` that's responsible for subscription caching and latency compensation. As a bonus, it also provides caching for HTTP fetching.
